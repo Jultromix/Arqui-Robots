@@ -18,7 +18,14 @@ class ArquiBot(PanelWidgets):
     def __init__(self, Window):
         super().__init__()
         self.MainWindow = Window
-        self.MainWindow_Width="1050"
-        self.MainWindow_Height="700"
+        self.MainWindow_Width="1070"
+        self.MainWindow_Height="650"
         self.MainWindow.geometry('{}x{}'.format(self.MainWindow_Width,self.MainWindow_Height))
-        self.Title="Interfaz Arquibot HMI"
+        self.MainWindow.title("Interfaz Arquibot HMI")
+
+        self.CreatePanels(self.MainWindow)
+
+if __name__ == '__main__':
+    Window = Tk()
+    application = ArquiBot(Window)
+    Window.mainloop()
