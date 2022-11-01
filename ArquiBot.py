@@ -11,8 +11,14 @@ import os
 import serial
 import math
 from tkinter.filedialog import asksaveasfile
-import numpy 
+import numpy as np
+from datetime import datetime
 
+import matplotlib
+matplotlib.use("TkAgg")         #backend
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+from matplotlib.figure import Figure
+import random
 
 class ArquiBot(PanelWidgets):
     def __init__(self, Window):
@@ -24,6 +30,73 @@ class ArquiBot(PanelWidgets):
         self.MainWindow.title("Interfaz Arquibot HMI")
 
         self.CreatePanels(self.MainWindow)
+
+        #Graph settings:
+        self.GraphFigure = Figure(figsize=(3,3),dpi=150,edgecolor='black')
+        self.Graph = self.GraphFigure.add_subplot(111, projection='3d')
+            
+            #canvas._tkcanvas.destroy()
+        self.canvas = FigureCanvasTkAgg(self.GraphFigure, self.MatplotlibGraph_LFrame)
+        self.canvas.get_tk_widget().pack(side=TOP, fill = BOTH, expand=False)
+        toolbar = NavigationToolbar2Tk(self.canvas, self.MatplotlibGraph_LFrame)
+        toolbar.update()
+        self.canvas._tkcanvas.pack(side=TOP, fill = BOTH, expand=False)
+        self.SetGraphProperties()
+        self.PlotData()
+    ##INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE##
+    ##INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE##
+
+    def MoveRobot(self):
+        self.SendDataToArduino(self.ValidateData())
+        self.ReadDataFromArduino()
+        pass
+
+    def SendDataToArduino(self,parameters=()):
+        pass
+
+
+    def ValidateData(self):
+        pass
+
+
+    def ReadDataFromArduino(self):
+        pass
+
+
+    def PlotData(self):
+        self.Graph.clear()
+        #self.Graph.plot(self.TimeArray,self.InputVoltageArray, color='#A5F4FA',linestyle='solid', marker='o',markersize='4', label="V_in")
+        #self.Graph.plot(self.TimeArray,self.OutputVoltageArray, color='#E3FA98',linestyle='solid', marker='x',markersize='4', label="V_out")
+        #self.canvas.draw_idle()
+
+        #N = 100
+        X = float(self.XCoord.get())
+        Y = float(self.YCoord.get())
+        Z = float(self.ZCoord.get())
+        self.Graph.scatter(X, Y, Z)
+        self.SetGraphProperties()
+        pass
+
+    def SetGraphProperties(self):
+        font = {'family': 'Arial Rounded MT Bold',
+        'color':  'white',
+        'weight': 'normal',
+        'size': 12,
+        }
+        self.Graph.set_title('Posición del Efector', fontdict = font)
+        self.Graph.grid(color='#667B84')
+        self.Graph.set_xlabel("Eje X [cm]",fontdict = font)
+        self.Graph.set_ylabel("Eje Y [cm]",fontdict = font)
+        self.Graph.set_zlabel("Eje Z [cm]",fontdict = font)
+        #self.Graph.legend(["V_in","V_out"])  
+        self.Graph.grid(color='#667B84')
+        self.GraphFigure.patch.set_facecolor('#465162')
+        self.Graph.xaxis.label.set_color('white')        #setting up X-axis label color 
+        self.Graph.yaxis.label.set_color('white')        #setting up Y-axis label color 
+        self.Graph.set_facecolor('#465162')              #Grah Background color
+        self.Graph.tick_params(axis='x', colors='#92C2E2',labelsize=10)  #setting up X-axis tick color to red
+        self.Graph.tick_params(axis='y', colors='#92C2E2',labelsize=10)  #setting up Y-axis tick color to black
+        pass
 
 if __name__ == '__main__':
     Window = Tk()

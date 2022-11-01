@@ -13,7 +13,7 @@ class PanelWidgets:
         pass
 
     def CreatePanels(self,ParentName):
-        self.CreateFrames()
+        self.CreateFrames(ParentName)
         self.CreateLabelFrames(ParentName)
         self.CreateLabels()
         self.CreateSpinBox()
@@ -35,15 +35,17 @@ class PanelWidgets:
         
     def CreateComboboxes(self):
         #-------Comboboxes in Controls Label Frame--------------#
-        self.SerialPort = ttk.Combobox(self.Settings_LFrame,width=6, value=['14400','19200','38400','57600','115200'])
+        self.SerialPort = ttk.Combobox(self.Settings_LFrame,width=6, value=['com1','com2','com3','com4','com5','com6'])
         self.SerialPort.set('com3')
         self.SerialPort.grid(row=0, column=1, padx=4, ipadx =30, columnspan=2)
 
-        self.Badurate = ttk.Combobox(self.Settings_LFrame,width=6, value=['115','com2','com3','com4','com5','com6'])
+        self.Badurate = ttk.Combobox(self.Settings_LFrame,width=6, value=['14400','19200','38400','57600','115200'])
         self.Badurate.set('9600')
         self.Badurate.grid(row=1, column=1, padx=4, ipadx =30, columnspan=2)
 
-    def CreateFrames(self):
+    def CreateFrames(self, ParentName):
+        self.LFramesContaineer = ttk.Frame(ParentName, width='1200', height='600')
+        self.LFramesContaineer.grid(row=0,column=0)
         pass
 
 
@@ -83,20 +85,23 @@ class PanelWidgets:
         pass
 
     def CreateLabelFrames(self,ParentName):
-        self.EndEffector_LFrame = LabelFrame(ParentName, width=480, height= 610, text="Efector Final", 
+        self.EndEffector_LFrame = LabelFrame(self.LFramesContaineer, width=480, height= 610, text="Efector Final", 
         font=('Arial Rounded MT Bold', 10), labelanchor= "n", relief="solid")
-        self.EndEffector_LFrame.grid(row=0, column=0, padx = 7, pady=10, ipadx=20,ipady=1)
+        self.EndEffector_LFrame.grid(row=1, column=0, padx = 7, pady=10, ipadx=20,ipady=1)
 
-        self.Joints_LFrame = LabelFrame(ParentName, width=480, height= 610, text="Articulaciones", 
+        self.Joints_LFrame = LabelFrame(self.LFramesContaineer, width=480, height= 610, text="Articulaciones", 
         font=('Arial Rounded MT Bold', 10), labelanchor= "n", relief="solid")
-        self.Joints_LFrame.grid(row=1, column=0, padx = 7, pady=10, ipadx=20,ipady=1)
+        self.Joints_LFrame.grid(row=2, column=0, padx = 7, pady=10, ipadx=20,ipady=1)
         pass
 
-        self.Settings_LFrame = LabelFrame(ParentName, width=480, height= 610, text="Configuración", 
+        self.Settings_LFrame = LabelFrame(self.LFramesContaineer, width=480, height= 610, text="Configuración", 
         font=('Arial Rounded MT Bold', 10), labelanchor= "n", relief="solid")
-        self.Settings_LFrame.grid(row=0, column=1, padx = 7, pady=10, ipadx=20,ipady=1)
+        self.Settings_LFrame.grid(row=0, column=0, padx = 7, pady=10, ipadx=20,ipady=1)
         pass
 
+        self.MatplotlibGraph_LFrame = LabelFrame(ParentName, width=100, height= 90, text="Área de trabajo: ", 
+        font=('Arial Rounded MT Bold', 10), labelanchor= "n", relief="solid")
+        self.MatplotlibGraph_LFrame.grid(row=0, column=1, padx = 40, pady=15, ipadx=20,ipady=5)
     def CreateRadiobuttons(self):
         #-------Radiobuttons in Settings Label Frame----------#
         self.ControlMode = StringVar()
@@ -116,13 +121,13 @@ class PanelWidgets:
         #-------SpinBoxes in EndEffector Label Frame-------#
         self.InitialPos = StringVar()
         self.InitialPos.set("0")
-        self.XCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.InitialPos)
+        self.XCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= "0")
         self.XCoord.grid(row=0, column=1, ipadx=0,ipady=0, padx=4)
 
-        self.YCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.InitialPos)
+        self.YCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= "0")
         self.YCoord.grid(row=1, column=1, ipadx=0,ipady=0, padx=4)
 
-        self.ZCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.InitialPos)
+        self.ZCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= "0")
         self.ZCoord.grid(row=2, column=1, ipadx=0,ipady=0, padx=4)
 
         #-------SpinBoxes in Joints Label Frame-------#
