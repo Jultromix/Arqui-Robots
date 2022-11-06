@@ -121,23 +121,23 @@ class PanelWidgets:
         #-------SpinBoxes in EndEffector Label Frame-------#
         self.XPos = StringVar()
         self.XPos.set("0")
-        self.XCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.XPos)
+        self.XCoord = Spinbox(self.EndEffector_LFrame,width=7,command=self.PlotData, from_=0.0, to=1800.0, textvariable= self.XPos)
         self.XCoord.grid(row=0, column=1, ipadx=0,ipady=0, padx=4)
 
         self.YPos = StringVar()
         self.YPos.set("0")
-        self.YCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.YPos)
+        self.YCoord = Spinbox(self.EndEffector_LFrame,width=7,command=self.PlotData, from_=0.0, to=1800.0, textvariable= self.YPos)
         self.YCoord.grid(row=1, column=1, ipadx=0,ipady=0, padx=4)
 
         self.ZPos = StringVar()
         self.ZPos.set("0")
-        self.ZCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.ZPos)
+        self.ZCoord = Spinbox(self.EndEffector_LFrame,width=7,command=self.PlotData, from_=0.0, to=1800.0, textvariable= self.ZPos)
         self.ZCoord.grid(row=2, column=1, ipadx=0,ipady=0, padx=4)
 
         #-------SpinBoxes in Joints Label Frame-------#
         self.BaseAngleString = StringVar()
         self.BaseAngleString.set("0")
-        self.BaseAngle = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.BaseAngleString)
+        self.BaseAngle = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.BaseAngleString, state ='disabled')
         self.BaseAngle.grid(row=0, column=1, ipadx=0,ipady=0, padx=8)
 
         self.VertPosString = StringVar()

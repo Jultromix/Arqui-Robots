@@ -1,0 +1,4 @@
+Tkinter: 
+
+spinboxes' state: 
+    https://stackoverflow.com/questions/37359710/disable-clicking-in-spinbox-python-tkinter
