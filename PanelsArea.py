@@ -119,26 +119,34 @@ class PanelWidgets:
 
     def CreateSpinBox(self):
         #-------SpinBoxes in EndEffector Label Frame-------#
-        self.InitialPos = StringVar()
-        self.InitialPos.set("0")
-        self.XCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= "0")
+        self.XPos = StringVar()
+        self.XPos.set("0")
+        self.XCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.XPos)
         self.XCoord.grid(row=0, column=1, ipadx=0,ipady=0, padx=4)
 
-        self.YCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= "0")
+        self.YPos = StringVar()
+        self.YPos.set("0")
+        self.YCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.YPos)
         self.YCoord.grid(row=1, column=1, ipadx=0,ipady=0, padx=4)
 
-        self.ZCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= "0")
+        self.ZPos = StringVar()
+        self.ZPos.set("0")
+        self.ZCoord = Spinbox(self.EndEffector_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.ZPos)
         self.ZCoord.grid(row=2, column=1, ipadx=0,ipady=0, padx=4)
 
         #-------SpinBoxes in Joints Label Frame-------#
-        self.InitialPos = StringVar()
-        self.InitialPos.set("0")
-        self.BaseAngle = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.InitialPos)
+        self.BaseAngleString = StringVar()
+        self.BaseAngleString.set("0")
+        self.BaseAngle = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.BaseAngleString)
         self.BaseAngle.grid(row=0, column=1, ipadx=0,ipady=0, padx=8)
 
-        self.VerticalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.InitialPos)
+        self.VertPosString = StringVar()
+        self.VertPosString.set("0")
+        self.VerticalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.VertPosString)
         self.VerticalPosition.grid(row=1, column=1, ipadx=0,ipady=0, padx=8)
 
-        self.HorizonalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.InitialPos)
+        self.HoriPosString = StringVar()
+        self.HoriPosString.set("0")
+        self.HorizonalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.HoriPosString)
         self.HorizonalPosition.grid(row=2, column=1, ipadx=0,ipady=0, padx=8)
         
