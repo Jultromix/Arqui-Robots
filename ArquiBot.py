@@ -46,6 +46,28 @@ class ArquiBot(PanelWidgets):
     ##INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE##
     ##INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE####INTERACTION##ZONE##
 
+    def SetEditableEntries(self):
+        if self.ControlMode.get() == "direct":
+            self.BaseAngle.configure(state='normal')
+            self.VerticalPosition.configure(state ='normal')
+            self.HorizontalPosition.configure(state ='normal')
+            
+            self.XCoord.configure(state ='disabled')
+            self.YCoord.configure(state ='disabled')
+            self.ZCoord.configure(state ='disabled') 
+            # self.JunctionState = "normal"
+            # self.CoordState = "disabled"
+        else:
+            self.BaseAngle.configure(state ='disabled')
+            self.VerticalPosition.configure(state ='disabled')
+            self.HorizontalPosition.configure(state ='disabled')
+            
+            self.XCoord.configure(state ='normal')
+            self.YCoord.configure(state ='normal')
+            self.ZCoord.configure(state ='normal')
+            # self.JunctionState = "disabled"
+            # self.CoordState = "normal"
+
     def MoveRobot(self):
         self.SendDataToArduino(self.ValidateData())
         self.ReadDataFromArduino()

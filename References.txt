@@ -1,4 +1,6 @@
 Tkinter: 
 
-spinboxes' state: 
+Modify spinboxes' state: 
     https://stackoverflow.com/questions/37359710/disable-clicking-in-spinbox-python-tkinter
+Modify object's attributes:
+    https://stackoverflow.com/questions/71005765/tkinter-how-to-change-attribute-value-of-object-using-oop

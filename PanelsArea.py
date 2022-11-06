@@ -107,10 +107,11 @@ class PanelWidgets:
         self.ControlMode = StringVar()
         self.ControlMode.set("inverse")
 
-        self.DirectMode = Radiobutton(self.Settings_LFrame, text='Directa', value='direct', variable=self.ControlMode)
+
+        self.DirectMode = Radiobutton(self.Settings_LFrame,command=self.SetEditableEntries, text='Directa', value='direct', variable=self.ControlMode)
         self.DirectMode.grid(row=2, column=1 )
 
-        self.InverseMode = Radiobutton(self.Settings_LFrame, text='Inversa', value='inverse', variable=self.ControlMode)
+        self.InverseMode = Radiobutton(self.Settings_LFrame,command=self.SetEditableEntries, text='Inversa', value='inverse', variable=self.ControlMode)
         self.InverseMode.grid(row=2, column=2)
         pass
         
@@ -137,16 +138,16 @@ class PanelWidgets:
         #-------SpinBoxes in Joints Label Frame-------#
         self.BaseAngleString = StringVar()
         self.BaseAngleString.set("0")
-        self.BaseAngle = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.BaseAngleString, state ='disabled')
+        self.BaseAngle = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.BaseAngleString, state='disabled')
         self.BaseAngle.grid(row=0, column=1, ipadx=0,ipady=0, padx=8)
 
         self.VertPosString = StringVar()
         self.VertPosString.set("0")
-        self.VerticalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.VertPosString)
+        self.VerticalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.VertPosString, state='disabled')
         self.VerticalPosition.grid(row=1, column=1, ipadx=0,ipady=0, padx=8)
 
         self.HoriPosString = StringVar()
         self.HoriPosString.set("0")
-        self.HorizonalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.HoriPosString)
-        self.HorizonalPosition.grid(row=2, column=1, ipadx=0,ipady=0, padx=8)
+        self.HorizontalPosition = Spinbox(self.Joints_LFrame,width=7, from_=0.0, to=1800.0, textvariable= self.HoriPosString, state='disabled')
+        self.HorizontalPosition.grid(row=2, column=1, ipadx=0,ipady=0, padx=8)
         
