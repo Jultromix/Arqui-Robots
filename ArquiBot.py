@@ -18,6 +18,8 @@ import matplotlib
 matplotlib.use("TkAgg")         #backend
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 from matplotlib.figure import Figure
+from matplotlib.patches import Circle
+import mpl_toolkits.mplot3d.art3d as art3d
 import random
 
 class ArquiBot(PanelWidgets):
@@ -78,6 +80,7 @@ class ArquiBot(PanelWidgets):
 
 
     def ValidateData(self):
+        
         pass
 
 
@@ -91,7 +94,8 @@ class ArquiBot(PanelWidgets):
         #self.Graph.plot(self.TimeArray,self.OutputVoltageArray, color='#E3FA98',linestyle='solid', marker='x',markersize='4', label="V_out")
         #self.canvas.draw_idle()
 
-        #N = 100
+
+        #EndEffector Position:
         X = float(self.XCoord.get())
         Y = float(self.YCoord.get())
         Z = float(self.ZCoord.get())
